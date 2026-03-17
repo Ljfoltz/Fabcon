@@ -1,0 +1,89 @@
+table InventoryTransactions
+	lineageTag: 644e54d9-6a16-419f-bd41-d07d455b3023
+	sourceLineageTag: [SupplyChain].[InventoryTransactions]
+
+	column InventoryTransactionID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4a6a8e75-dc27-4829-b7d5-86ef1a5f1563
+		sourceLineageTag: InventoryTransactionID
+		summarizeBy: count
+		sourceColumn: InventoryTransactionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2ce7c84d-5e47-44c2-99a7-bd3e5758a836
+		sourceLineageTag: ProductID
+		summarizeBy: count
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarehouseID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e5485a4c-6e71-4e3d-8c1c-44893ddc6a87
+		sourceLineageTag: WarehouseID
+		summarizeBy: count
+		sourceColumn: WarehouseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TransactionType
+		dataType: string
+		sourceProviderType: varchar(-1)
+		lineageTag: a736562b-4528-461c-808c-95266c9892d0
+		sourceLineageTag: TransactionType
+		summarizeBy: none
+		sourceColumn: TransactionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d14e710a-004a-4230-a03d-3e2b2f81bfd1
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column TransactionDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 9ccfe2d4-c980-4acc-9f9e-1b57a3a406b9
+		sourceLineageTag: TransactionDate
+		summarizeBy: none
+		sourceColumn: TransactionDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReferenceID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7d4efb44-f8fa-4652-8b84-f685cc21df40
+		sourceLineageTag: ReferenceID
+		summarizeBy: count
+		sourceColumn: ReferenceID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InventoryTransactions = entity
+		mode: directLake
+		source
+			entityName: InventoryTransactions
+			schemaName: SupplyChain
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
